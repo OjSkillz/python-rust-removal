@@ -14,21 +14,21 @@ def calculate(first_number, operator, second_number):
         divide(first_number, second_number)
     return "Invalid Operation"
 
-def add(first_number, second_number):
-    return int(first_number) + int(second_number)
+def add(first, second):
+    return int(first) + int(second)
 
-def subtract(first_number, second_number):
-    return int(first_number) - int(second_number)
+def subtract(first, second):
+    return int(first) - int(second)
 
-def multiply(first_number, second_number):
-    return int(first_number) * int(second_number)
+def multiply(first, second):
+    return int(first) * int(second)
 
-def divide(first_number, second_number):
-    return int(first_number) / int(second_number)
+def divide(first, second):
+    return int(first) / int(second)
 
-first_number = input("Enter first number: ")
+first_input = input("Enter first number: ")
 operand = input("Enter operator ('+', '-', '* or x', and '/': " )
-second_number = input("Enter second number: ")
+second_input = input("Enter second number: ")
 
-calculate(first_number, operand, second_number)
+calculate(first_input, operand, second_input)
 
