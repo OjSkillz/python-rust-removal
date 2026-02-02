@@ -27,9 +27,9 @@ def multiply(first, second):
 def divide(first, second):
     return first / second
 
-first_input = input("Enter first number: ")
+first_input = float(input("Enter first number: "))
 operand = input("Enter operator ('+', '-', '* or x', and '/'): " )
-second_input = input("Enter second number: ")
+second_input = float(input("Enter second number: "))
 
 print(calculate(first_input, operand, second_input))
 
