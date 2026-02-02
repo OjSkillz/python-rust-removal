@@ -5,27 +5,27 @@
 
 def calculate(first_number, operator, second_number):
     if operator == "+":
-        return f"""{first_number} {operator} {second_number} {"="} {add(first_number, second_number)}"""
+        return add(first_number, second_number)
     elif operator == '-':
-        return f"""{first_number} {operator} {second_number} {"="} {subtract(first_number, second_number)}"""
+        return subtract(first_number, second_number)
     elif operator == '*' or operator == 'x'.lower():
-        return f"""{first_number} {operator} {second_number} {"="} {multiply(first_number, second_number)}"""
+        return multiply(first_number, second_number)
     elif operator == '/':
-        return f"""{first_number} {operator} {second_number} {"="} {divide(first_number, second_number)}"""
+        return divide(first_number, second_number)
 
     return "Invalid Operation"
 
 def add(first, second):
-    return int(first) + int(second)
+    return first + second
 
 def subtract(first, second):
-    return int(first) - int(second)
+    return first - second
 
 def multiply(first, second):
-    return int(first) * int(second)
+    return first * second
 
 def divide(first, second):
-    return int(first) / int(second)
+    return first / second
 
 first_input = input("Enter first number: ")
 operand = input("Enter operator ('+', '-', '* or x', and '/'): " )
