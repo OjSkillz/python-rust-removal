@@ -25,11 +25,14 @@ def multiply(first, second):
     return first * second
 
 def divide(first, second):
+    if second == 0:
+        return "Error division by zero"
     return first / second
 
 first_input = float(input("Enter first number: "))
 operand = input("Enter operator ('+', '-', '* or x', and '/'): " )
 second_input = float(input("Enter second number: "))
 
-print(calculate(first_input, operand, second_input))
+result = calculate(first_input, operand, second_input)
+print(f"{first_input} {operand} {second_input} = {result}")
 
