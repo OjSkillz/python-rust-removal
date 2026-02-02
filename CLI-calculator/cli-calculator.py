@@ -11,7 +11,7 @@ def calculate(first_number, operator, second_number):
     elif operator == '*' or operator == 'x'.lower():
         print(multiply(first_number, second_number))
     elif operator == '/':
-        print(first_number, second_number))
+        print(divide(first_number, second_number))
     return "Invalid Operation"
 
 def add(first, second):
