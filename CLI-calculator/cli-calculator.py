@@ -4,14 +4,14 @@
 # return result of operation
 
 def calculate(first_number, operator, second_number):
-    if operator == '+':
-        add(first_number, second_number)
+    if operator == "+":
+        print(add(first_number, second_number))
     elif operator == '-':
-        subtract(first_number, second_number)
+        print(subtract(first_number, second_number))
     elif operator == '*' or operator == 'x'.lower():
-        multiply(first_number, second_number)
+        print(multiply(first_number, second_number))
     elif operator == '/':
-        divide(first_number, second_number)
+        print(first_number, second_number))
     return "Invalid Operation"
 
 def add(first, second):
@@ -27,8 +27,8 @@ def divide(first, second):
     return int(first) / int(second)
 
 first_input = input("Enter first number: ")
-operand = input("Enter operator ('+', '-', '* or x', and '/': " )
+operand = input("Enter operator ('+', '-', '* or x', and '/'): " )
 second_input = input("Enter second number: ")
 
-calculate(first_input, operand, second_input)
+print(calculate(first_input, operand, second_input))
 
