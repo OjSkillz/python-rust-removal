@@ -14,3 +14,14 @@ def calculate(first_number, operator, second_number):
         divide(first_number, second_number)
     return "Invalid Operation"
 
+def add(first_number, second_number):
+    return int(first_number) + int(second_number)
+
+def subtract(first_number, second_number):
+    return int(first_number) - int(second_number)
+
+def multiply(first_number, second_number):
+    return int(first_number) * int(second_number)
+
+def divide(first_number, second_number):
+    return int(first_number) / int(second_number)
