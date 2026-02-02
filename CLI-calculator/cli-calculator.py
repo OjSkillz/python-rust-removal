@@ -25,3 +25,10 @@ def multiply(first_number, second_number):
 
 def divide(first_number, second_number):
     return int(first_number) / int(second_number)
+
+first_number = input("Enter first number: ")
+operand = input("Enter operator ('+', '-', '* or x', and '/': " )
+second_number = input("Enter second number: ")
+
+calculate(first_number, operand, second_number)
+
