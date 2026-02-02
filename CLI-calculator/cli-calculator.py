@@ -5,13 +5,13 @@
 
 def calculate(first_number, operator, second_number):
     if operator == "+":
-        return add(first_number, second_number)
+        return first_number, operator, second_number, "=", add(first_number, second_number)
     elif operator == '-':
-        return subtract(first_number, second_number)
+        return first_number, operator, second_number, "=", subtract(first_number, second_number)
     elif operator == '*' or operator == 'x'.lower():
-       return multiply(first_number, second_number)
+       return first_number, operator, second_number, "=", multiply(first_number, second_number)
     elif operator == '/':
-        return divide(first_number, second_number)
+        return first_number, operator, second_number, "=", divide(first_number, second_number)
 
     return "Invalid Operation"
 
