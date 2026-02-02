@@ -8,12 +8,12 @@ def calculate(first_number, operator, second_number):
         return add(first_number, second_number)
     elif operator == '-':
         return subtract(first_number, second_number)
-    elif operator == '*' or operator == 'x'.lower():
+    elif operator in ('*', 'x', 'X'):
         return multiply(first_number, second_number)
     elif operator == '/':
         return divide(first_number, second_number)
 
-    return "Invalid Operation"
+    return "Invalid Operator"
 
 def add(first, second):
     return first + second
@@ -29,10 +29,14 @@ def divide(first, second):
         return "Error division by zero"
     return first / second
 
-first_input = float(input("Enter first number: "))
-operand = input("Enter operator ('+', '-', '* or x', and '/'): " )
-second_input = float(input("Enter second number: "))
 
-result = calculate(first_input, operand, second_input)
-print(f"{first_input} {operand} {second_input} = {result}")
+try:
+    first_input = float(input("Enter first number: "))
+    operand = input("Enter operator ('+', '-', '* or x', and '/'): " )
+    second_input = float(input("Enter second number: "))
 
+    result = calculate(first_input, operand, second_input)
+    print(f"{first_input} {operand} {second_input} = {result}")
+
+except ValueError:
+    print("Please enter a valid number!\n")
