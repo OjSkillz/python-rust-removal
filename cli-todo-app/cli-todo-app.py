@@ -20,9 +20,9 @@ def delete_task(title):
 
 
 print("Welcome to your ToDo App\nPlease choose from the options below: ")
-choice = int(input("1. Add Task"
-                   "2. View Tasks"
-                   "3. Delete Task"))
+choice = int(input("1.Add Task\n"
+                   "2.View Tasks\n"
+                   "3.Delete Task\n"))
 
 match choice:
     case 1:
