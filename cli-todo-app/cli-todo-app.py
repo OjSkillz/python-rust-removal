@@ -9,7 +9,7 @@ tasks = []
 def add_task(day, title):
     task = {day: title}
     tasks.append(task)
-    with open("/cli-todo-app/tasks-directory.json", "w") as file:
+    with open("tasks-directory.json", "w") as file:
         json.dump(tasks, file, indent=4)
 
 def view_tasks():
