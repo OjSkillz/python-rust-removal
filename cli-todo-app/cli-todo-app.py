@@ -33,31 +33,35 @@ def delete_task(title):
         json.dump(tasks, file, indent=4)
 
 def main_menu():
-    choice = int(input("1.Add Task\n"
-                       "2.View Tasks\n"
-                       "3.Delete Task\n"
-                       "4.Exit\n"))
+    try:
+        choice = int(input("1.Add Task\n"
+                           "2.View Tasks\n"
+                           "3.Delete Task\n"
+                           "4.Exit\n"))
 
-    match choice:
+        match choice:
 
-        case 1:
-            day = input("Enter day: ")
-            title = input("Enter title: ")
-            add_task(day, title)
-            print("Task has been added successfully")
-            main_menu()
-        case 2:
-            view_tasks()
-            main_menu()
+            case 1:
+                day = input("Enter day: ")
+                title = input("Enter title: ")
+                add_task(day, title)
+                print("Task has been added successfully")
+                main_menu()
+            case 2:
+                view_tasks()
+                main_menu()
 
-        case 3:
-            response = input("Enter the title of the task you would like to delete: ")
-            delete_task(response)
-            print("Task has been deleted successfully")
-            main_menu()
+            case 3:
+                response = input("Enter the title of the task you would like to delete: ")
+                delete_task(response)
+                print("Task has been deleted successfully")
+                main_menu()
 
-        case 4:
-            print("App closed")
+            case 4:
+                print("App closed")
+    except ValueError:
+        print("Invalid input")
+        main_menu()
 
 print("Welcome to your ToDo App\nPlease choose from the options below: ")
 main_menu()
