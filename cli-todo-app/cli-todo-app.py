@@ -34,6 +34,7 @@ def delete_task(title):
 
 def main_menu():
     try:
+        print("Please choose from the options below: ")
         choice = int(input("1.Add Task\n"
                            "2.View Tasks\n"
                            "3.Delete Task\n"
@@ -60,10 +61,10 @@ def main_menu():
             case 4:
                 print("App closed")
     except ValueError:
-        print("Invalid input")
+        print("Invalid input!")
         main_menu()
 
-print("Welcome to your ToDo App\nPlease choose from the options below: ")
+print("Welcome to your ToDo App\n")
 main_menu()
 
 
