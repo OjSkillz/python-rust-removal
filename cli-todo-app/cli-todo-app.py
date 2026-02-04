@@ -1,4 +1,5 @@
 import json
+from json import JSONDecodeError
 from re import match
 
 
@@ -9,9 +10,10 @@ def add_task(day, title):
         json.dump(task, file, indent=4)
 
 def view_tasks():
-    with open("tasks-directory.json", "r") as file:
-        tasks = json.load(file)
-    if len(tasks) == 0:
+    try:
+        with open("tasks-directory.json", "r") as file:
+            tasks = json.load(file)
+    except JSONDecodeError:
         print("No tasks scheduled\n")
     else:
         print("Scheduled Tasks: \n")
