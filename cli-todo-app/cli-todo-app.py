@@ -5,7 +5,8 @@ from re import match
 
 tasks = {}
 def add_task(day, title):
-    tasks[day] = title
+    task = {day: title}
+    tasks.update(task)
     with open("tasks-directory.json", "w") as file:
         json.dump(tasks, file, indent=4)
 
@@ -64,7 +65,7 @@ def main_menu():
         print("Invalid input!")
         main_menu()
 
-print("Welcome to your ToDo App\n")
+print("Welcome to your ToDo App")
 main_menu()
 
 
