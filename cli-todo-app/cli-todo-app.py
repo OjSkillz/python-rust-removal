@@ -2,39 +2,45 @@ import json
 from json import JSONDecodeError
 from re import match
 
+def load_tasks(path = "tasks-directory.json"):
+    with open(path, "r") as file:
+        return json.load(file)
 
-tasks = {}
-def add_task(day, title):
-    task = {day: title}
-    tasks.update(task)
-    with open("tasks-directory.json", "w") as file:
+
+def save_tasks(tasks, path = "tasks-directory.json"):
+    with open(path, "w") as file:
         json.dump(tasks, file, indent=4)
+
+def add_task(day, task):
+    day = day.strip()
+    task = task.strip()
+
+    tasks = load_tasks()
+    tasks.setdefault(day, [])
+    tasks[day].append(task)
+    save_tasks(tasks)
 
 def view_tasks():
     try:
-        with open("tasks-directory.json", "r") as file:
-            all_tasks = json.load(file)
+       tasks = load_tasks()
     except JSONDecodeError:
         print("No tasks scheduled\n")
-    else:
+
         print("Scheduled Tasks: \n")
         print(f"{"Day":>9} || Title")
         print(f"{'-' * 30}")
-
-        for day, title in all_tasks.items():
-            print(f"{day:>9} || {title}")
+        print(tasks)
+        for day, task in tasks.items():
+            print(f"{day:>9} || {task}")
             print(f"{'*' * 30}")
 
 def delete_task(title):
-    for task in tasks:
-        for keys, values in task.items():
-            if values == title:
-                tasks.pop(task)
+   tasks = load_tasks()
     with open("tasks-directory.json", "w") as file:
         json.dump(tasks, file, indent=4)
 
 def main_menu():
-    try:
+  #   try:
         print("Please choose from the options below: ")
         choice = int(input("1.Add Task\n"
                            "2.View Tasks\n"
@@ -61,9 +67,9 @@ def main_menu():
 
             case 4:
                 print("App closed")
-    except ValueError:
-        print("Invalid input!")
-        main_menu()
+#    except ValueError:
+ #       print("Invalid input!")
+  #      main_menu()
 
 print("Welcome to your ToDo App")
 main_menu()
