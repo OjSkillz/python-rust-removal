@@ -9,7 +9,10 @@ def add_task(day, title):
 
 def view_tasks():
     for task_ in tasks:
-        return task_
+        for day, title in task_.items():
+            print("Scheduled Tasks: \n")
+            print(f"Day {"||":>20} Title")
+            print(f"{day:>20} {title}")
     return None
 
 def delete_task(title):
