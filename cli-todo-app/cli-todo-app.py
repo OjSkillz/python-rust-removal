@@ -5,9 +5,8 @@ from re import match
 
 
 def add_task(day, title):
-    task = {day: title}
-    with open("tasks-directory.json", "a") as file:
-        json.dump(task, file, indent=4)
+    with open("tasks-directory.json", "w") as file:
+        json.dump({day: title}, file, indent=4)
 
 def view_tasks():
     try:
