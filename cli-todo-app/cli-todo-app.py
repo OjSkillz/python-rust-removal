@@ -1,19 +1,23 @@
 from re import match
 
-task = {}
+
 tasks = []
 
 def add_task(day, title):
-    task[day] = title
+    task = {day: title}
     tasks.append(task)
 
 def view_tasks():
-    print("Scheduled Tasks: \n")
-    print(f"Day {"||":<5} Title")
-    for task_ in tasks:
-        for day, title in task_.items():
-            print(f"{day:>20} {title:>10}")
-    return None
+    if len(tasks) == 0:
+        print("No tasks scheduled")
+    else:
+        print("Scheduled Tasks: \n")
+        print(f"{"Day":>9} || Title")
+        print(f"{'-' * 30}")
+        for task_ in tasks:
+            for day, title in task_.items():
+                print(f"{day:>9} || {title}")
+                print(f"{'*' * 30}")
 
 def delete_task(title):
     for task_ in tasks:
@@ -28,6 +32,7 @@ def main_menu():
                        "4.Exit\n"))
 
     match choice:
+
         case 1:
             day = input("Enter day: ")
             title = input("Enter title: ")
@@ -35,11 +40,11 @@ def main_menu():
             print("Task has been added successfully")
             main_menu()
         case 2:
-            print(view_tasks())
+            view_tasks()
             main_menu()
 
         case 3:
-            response = input("Enter the title of the task you would like to delete")
+            response = input("Enter the title of the task you would like to delete: ")
             delete_task(response)
             print("Task has been deleted successfully")
             main_menu()
