@@ -1,15 +1,20 @@
+import json
 from re import match
 
 
 tasks = []
 
+
+
 def add_task(day, title):
     task = {day: title}
     tasks.append(task)
+    with open("/cli-todo-app/tasks-directory.json", "w") as file:
+        json.dump(tasks, file, indent=4)
 
 def view_tasks():
     if len(tasks) == 0:
-        print("No tasks scheduled")
+        print("No tasks scheduled\n")
     else:
         print("Scheduled Tasks: \n")
         print(f"{"Day":>9} || Title")
