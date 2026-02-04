@@ -25,11 +25,12 @@ def view_tasks():
             print(f"{'*' * 30}")
 
 def delete_task(title):
-
-    for task_ in tasks:
-        for keys, values in task_.items():
+    for task in tasks:
+        for keys, values in task.items():
             if values == title:
-                tasks.remove(task_)
+                tasks.pop(task)
+    with open("tasks-directory.json", "w") as file:
+        json.dump(tasks, file, indent=4)
 
 def main_menu():
     choice = int(input("1.Add Task\n"
