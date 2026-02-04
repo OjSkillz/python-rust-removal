@@ -2,23 +2,24 @@ import json
 from re import match
 
 
-tasks = []
-
-
 
 def add_task(day, title):
+    tasks = []
     task = {day: title}
     tasks.append(task)
     with open("tasks-directory.json", "w") as file:
         json.dump(tasks, file, indent=4)
 
 def view_tasks():
+    with open("tasks-directory.json", "r") as file:
+        tasks = json.load(file)
     if len(tasks) == 0:
         print("No tasks scheduled\n")
     else:
         print("Scheduled Tasks: \n")
         print(f"{"Day":>9} || Title")
         print(f"{'-' * 30}")
+
         for task_ in tasks:
             for day, title in task_.items():
                 print(f"{day:>9} || {title}")
