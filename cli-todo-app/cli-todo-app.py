@@ -29,13 +29,13 @@ def view_tasks():
         print("Scheduled Tasks: \n")
         print(f"{"Day":>9} || Title")
         print(f"{'-' * 30}")
-        print(tasks)
+
         for day, task in tasks.items():
             print(f"{day:>9} || {task}")
             print(f"{'*' * 30}")
 
 def delete_task(title):
-   tasks = load_tasks()
+    tasks = load_tasks()
     with open("tasks-directory.json", "w") as file:
         json.dump(tasks, file, indent=4)
 
