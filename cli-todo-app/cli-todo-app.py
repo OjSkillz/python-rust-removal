@@ -20,10 +20,9 @@ def view_tasks():
         print(f"{"Day":>9} || Title")
         print(f"{'-' * 30}")
 
-        for task_ in tasks:
-            for day, title in task_.items():
-                print(f"{day:>9} || {title}")
-                print(f"{'*' * 30}")
+        for day, title in tasks.items():
+            print(f"{day:>9} || {title}")
+            print(f"{'*' * 30}")
 
 def delete_task(title):
 
