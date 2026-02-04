@@ -3,15 +3,16 @@ from json import JSONDecodeError
 from re import match
 
 
-
+tasks = {}
 def add_task(day, title):
-    with open("tasks-directory.json", "a") as file:
-        json.dump({day: title}, file, indent=4)
+    tasks[day] = title
+    with open("tasks-directory.json", "w") as file:
+        json.dump(tasks, file, indent=4)
 
 def view_tasks():
     try:
         with open("tasks-directory.json", "r") as file:
-            tasks = json.load(file)
+            all_tasks = json.load(file)
     except JSONDecodeError:
         print("No tasks scheduled\n")
     else:
@@ -19,7 +20,7 @@ def view_tasks():
         print(f"{"Day":>9} || Title")
         print(f"{'-' * 30}")
 
-        for day, title in tasks.items():
+        for day, title in all_tasks.items():
             print(f"{day:>9} || {title}")
             print(f"{'*' * 30}")
 
