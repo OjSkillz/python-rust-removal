@@ -7,7 +7,7 @@ def add_task(day, title):
     tasks = []
     task = {day: title}
     tasks.append(task)
-    with open("tasks-directory.json", "w") as file:
+    with open("tasks-directory.json", "a") as file:
         json.dump(tasks, file, indent=4)
 
 def view_tasks():
@@ -26,6 +26,7 @@ def view_tasks():
                 print(f"{'*' * 30}")
 
 def delete_task(title):
+
     for task_ in tasks:
         for keys, values in task_.items():
             if values == title:
