@@ -28,7 +28,7 @@ def view_tasks():
     if tasks == {}:
         print("No tasks scheduled\n")
     else:
-        max_tasks_len = max(len(character) for character in [task for task in tasks.values()])
+        max_tasks_len = max(sum(character) for character in [task for task in tasks.values()])
         print("Scheduled Tasks: \n")
         print(f"{"Day":>9} || Title")
         print(f"{'-' * max_tasks_len}")
