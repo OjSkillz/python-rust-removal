@@ -22,7 +22,7 @@ def add_task(day, task):
     tasks[day].append(task)
     save_tasks(tasks)
 
-def view_tasks():
+def view_all_tasks():
 
     tasks = load_tasks()
     if tasks == {}:
@@ -37,10 +37,10 @@ def view_tasks():
 
 
 
-def delete_task(title):
+def delete_task(day:str, task_index:int):
     tasks = load_tasks()
-    with open("tasks-directory.json", "w") as file:
-        json.dump(tasks, file, indent=4)
+    tasks[day].pop(task_index - 1)
+    save_tasks(tasks)
 
 def main_menu():
   #   try:
@@ -63,7 +63,7 @@ def main_menu():
                 main_menu()
 
             case 3:
-                response = input("Enter the title of the task you would like to delete: ")
+                response = input("Enter the day of the task you would like to delete: ")
                 delete_task(response)
                 print("Task has been deleted successfully")
                 main_menu()
