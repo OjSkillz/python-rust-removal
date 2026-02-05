@@ -63,11 +63,14 @@ def main_menu():
             case 1:
                 day = input("Enter day: ")
                 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-                while day.islower() not in days:
-                    print("Invalid day!")
-                    main_menu()
+                for _ in days:
+                    while day != _.casefold():
+                        print("Invalid day!")
+                        day = input("Enter day: ")
 
                 task = input("Enter task: ")
+
+                while element in task not in [^'aA-zZ']:
                 add_task(day, task)
                 print("Task has been added successfully")
                 main_menu()
