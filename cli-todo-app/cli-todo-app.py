@@ -3,9 +3,11 @@ from json import JSONDecodeError
 from re import match
 
 def load_tasks(path = "tasks-directory.json"):
-    with open(path, "r") as file:
-        return json.load(file)
-
+    try:
+        with open(path, "r") as file:
+            return json.load(file)
+    except JSONDecodeError:
+        return {}
 
 def save_tasks(tasks, path = "tasks-directory.json"):
     with open(path, "w") as file:
@@ -25,7 +27,7 @@ def view_tasks():
        tasks = load_tasks()
     except JSONDecodeError:
         print("No tasks scheduled\n")
-
+    else:
         print("Scheduled Tasks: \n")
         print(f"{"Day":>9} || Title")
         print(f"{'-' * 30}")
