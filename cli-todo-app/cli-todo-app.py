@@ -17,7 +17,7 @@ def save_tasks(tasks, path = "tasks-directory.json"):
         json.dump(tasks, file, indent=4)
 
 def add_task(day, task):
-    day = day.strip()
+    day = day.strip().capitalize()
     task = task.strip()
 
     tasks = load_tasks()
@@ -47,7 +47,7 @@ def delete_task(day:str, task_id:int):
 
 
 def view_tasks_by_day(day):
-    task_by_day= load_tasks()[day]
+    task_by_day= load_tasks()[day.capitalize()]
     print(f"Tasks for {day}: \n")
     for index, task in enumerate(task_by_day, start=1):
         print(f"{index}. {task}")
@@ -65,11 +65,11 @@ def main_menu():
 
             case 1:
                 day = input("Enter day: ").casefold()
-                days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+                days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
 
                 while day not in days:
                     print("Invalid day!")
-                    day = input("Enter day: ")
+                    day = input("Enter day: ").casefold()
 
                 task = input("Enter task: ")
                 task_format = r"\w"
