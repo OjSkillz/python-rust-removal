@@ -37,9 +37,9 @@ def view_all_tasks():
 
 
 
-def delete_task(day:str, task_index:int):
+def delete_task(day:str, task_id:int):
     tasks = load_tasks()
-    tasks[day].pop(task_index - 1)
+    tasks[day].pop(task_id - 1)
     save_tasks(tasks)
 
 
@@ -51,7 +51,7 @@ def view_tasks_by_day(day):
 
 
 def main_menu():
-  #   try:
+     try:
         print("Please choose from the options below: ")
         choice = int(input("1.Add Task\n"
                            "2.View Tasks\n"
@@ -62,6 +62,11 @@ def main_menu():
 
             case 1:
                 day = input("Enter day: ")
+                days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+                while day.islower() not in days:
+                    print("Invalid day!")
+                    main_menu()
+
                 task = input("Enter task: ")
                 add_task(day, task)
                 print("Task has been added successfully")
@@ -80,9 +85,9 @@ def main_menu():
 
             case 4:
                 print("App closed")
-#    except ValueError:
- #       print("Invalid input!")
-  #      main_menu()
+     except ValueError:
+        print("Invalid input!")
+        main_menu()
 
 print("Welcome to your ToDo App")
 main_menu()
