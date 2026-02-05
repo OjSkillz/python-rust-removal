@@ -23,9 +23,9 @@ def add_task(day, task):
     save_tasks(tasks)
 
 def view_tasks():
-    try:
-       tasks = load_tasks()
-    except JSONDecodeError:
+
+    tasks = load_tasks()
+    if tasks == {}:
         print("No tasks scheduled\n")
     else:
         print("Scheduled Tasks: \n")
