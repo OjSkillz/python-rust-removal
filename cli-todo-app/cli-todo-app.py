@@ -69,8 +69,10 @@ def main_menu():
                         day = input("Enter day: ")
 
                 task = input("Enter task: ")
-
-                while element in task not in [^'aA-zZ']:
+                task_format = r"\w"
+                while not match(task_format, task):
+                    print("Invalid task format!")
+                    task = input("Enter task: ")
                 add_task(day, task)
                 print("Task has been added successfully")
                 main_menu()
