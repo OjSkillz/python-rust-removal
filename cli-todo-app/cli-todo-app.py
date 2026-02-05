@@ -30,7 +30,7 @@ def view_all_tasks():
     else:
         print("Scheduled Tasks: \n")
         print(f"{"Day":>9} || Title")
-
+        print(f'     {"*" * 14} ')
         for day, task in tasks.items():
             print(f"{day:>9} || {str(task).strip('[]')}")
 
@@ -41,6 +41,14 @@ def delete_task(day:str, task_index:int):
     tasks = load_tasks()
     tasks[day].pop(task_index - 1)
     save_tasks(tasks)
+
+
+def view_tasks_by_day(day):
+    task_by_day= load_tasks()[day]
+    print(f"Tasks for {day}: \n")
+    for index, task in enumerate(task_by_day, start=1):
+        print(f"{index}. {task}")
+
 
 def main_menu():
   #   try:
@@ -59,11 +67,12 @@ def main_menu():
                 print("Task has been added successfully")
                 main_menu()
             case 2:
-                view_tasks()
+                view_all_tasks()
                 main_menu()
 
             case 3:
-                response = input("Enter the day of the task you would like to delete: ")
+                response = input("Enter day : ")
+                view_tasks_by_day(response)
                 delete_task(response)
                 print("Task has been deleted successfully")
                 main_menu()
