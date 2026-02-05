@@ -62,8 +62,8 @@ def main_menu():
 
             case 1:
                 day = input("Enter day: ")
-                title = input("Enter title: ")
-                add_task(day, title)
+                task = input("Enter task: ")
+                add_task(day, task)
                 print("Task has been added successfully")
                 main_menu()
             case 2:
@@ -71,9 +71,10 @@ def main_menu():
                 main_menu()
 
             case 3:
-                response = input("Enter day : ")
-                view_tasks_by_day(response)
-                delete_task(response)
+                day = input("Enter day : ")
+                view_tasks_by_day(day)
+                task_index = int(input("Enter task number: "))
+                delete_task(day, task_index)
                 print("Task has been deleted successfully")
                 main_menu()
 
