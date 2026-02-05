@@ -2,6 +2,9 @@ import json
 from json import JSONDecodeError
 from re import match
 
+from uaclient.cli import help_command
+
+
 def load_tasks(path = "tasks-directory.json"):
     try:
         with open(path, "r") as file:
@@ -61,12 +64,12 @@ def main_menu():
         match choice:
 
             case 1:
-                day = input("Enter day: ")
+                day = input("Enter day: ").casefold()
                 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-                for _ in days:
-                    while day != _.casefold():
-                        print("Invalid day!")
-                        day = input("Enter day: ")
+
+                while day not in days:
+                    print("Invalid day!")
+                    day = input("Enter day: ")
 
                 task = input("Enter task: ")
                 task_format = r"\w"
