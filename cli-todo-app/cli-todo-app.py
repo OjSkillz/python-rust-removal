@@ -2,8 +2,6 @@ import json
 from json import JSONDecodeError
 from re import match
 
-from uaclient.cli import help_command
-
 
 def load_tasks(path = "tasks-directory.json"):
     try:
