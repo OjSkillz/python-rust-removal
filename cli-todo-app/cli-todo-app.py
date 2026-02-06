@@ -45,8 +45,8 @@ def delete_task(day:str, task_id:int):
     tasks = load_tasks()
     day = day.strip().capitalize()
     if task_id < 1 or task_id > len(tasks[day]):
-        print("Invalid task number")
-        return
+        return "Invalid task number"
+
     tasks[day].pop(task_id - 1)
     if not tasks[day]:
         del tasks[day]
@@ -87,7 +87,7 @@ def main_menu():
                         day = input("Enter day: ").casefold()
 
                     task = input("Enter task: ")
-                    task_format = r"[^aA-zZ]"
+                    task_format = r"^[a-zA-Z ]+$"
                     while not re.match(task_format, task):
                         print("Invalid task format!")
                         task = input("Enter task: ")
@@ -102,8 +102,11 @@ def main_menu():
                     day = input("Enter day : ").casefold()
                     if not view_tasks_by_day(day):
                         task_index = int(input("Enter task number: "))
-                        if not delete_task(day, task_index):
+                        if delete_task(day, task_index) == "Invalid task number":
+                            print(delete_task(day, task_index))
+                        else:
                             print("Task has been deleted successfully")
+
 
 
                 case 4:
