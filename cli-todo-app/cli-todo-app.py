@@ -111,7 +111,7 @@ def main_menu():
 
                 case 4:
                     print("App closed")
-
+                    break
          except ValueError:
             print("Invalid input!")
 
