@@ -1,14 +1,12 @@
 {
     "Sunday": [
-        "Play Tennis",
-        "Party"
+        "Play Tennis"
     ],
     "Monday": [
-        "Rehearse",
-        "Buy groceries",
-        "Fetch fuel"
+        "Rehearse"
     ],
     "Tuesday": [
         "Go to the gym"
-    ]
+    ],
+    "Friday": []
 }

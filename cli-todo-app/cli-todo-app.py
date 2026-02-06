@@ -1,6 +1,6 @@
 import json
 from json import JSONDecodeError
-from re import match
+import re
 
 
 def load_tasks(path = "tasks-directory.json"):
@@ -43,28 +43,27 @@ def view_all_tasks():
 
 def delete_task(day:str, task_id:int):
     tasks = load_tasks()
-    if day not in tasks:
-        print("No tasks scheduled for this day")
-        return
-    elif task_id < 1 or task_id > len(tasks[day]):
+    day = day.strip().capitalize()
+    if task_id < 1 or task_id > len(tasks[day]):
         print("Invalid task number")
         return
-    else:
-        tasks[day].pop(task_id - 1)
-        save_tasks(tasks)
-        return
+    tasks[day].pop(task_id - 1)
+    save_tasks(tasks)
+    return
 
 def view_tasks_by_day(day):
     tasks = load_tasks()
+    day = day.strip().capitalize()
     if day not in tasks:
         print("No tasks scheduled for this day")
         return
     else:
-        task_by_day = tasks[day.capitalize()]
+        task_by_day = tasks[day]
         print(f"Tasks for {day}: \n")
         for index, task in enumerate(task_by_day, start=1):
             print(f"{index}. {task}")
-            return
+        return
+
 
 def main_menu():
         while True:
@@ -86,8 +85,8 @@ def main_menu():
                         day = input("Enter day: ").casefold()
 
                     task = input("Enter task: ")
-                    task_format = r"\w"
-                    while not match(task_format, task):
+                    task_format = r"[^aA-zZ]"
+                    while not re.match(task_format, task):
                         print("Invalid task format!")
                         task = input("Enter task: ")
                     add_task(day, task)
@@ -98,11 +97,11 @@ def main_menu():
 
 
                 case 3:
-                    day = input("Enter day : ")
-                    view_tasks_by_day(day)
-                    task_index = int(input("Enter task number: "))
-                    delete_task(day, task_index)
-                    print("Task has been deleted successfully")
+                    day = input("Enter day : ").casefold()
+                    if not view_tasks_by_day(day):
+                        task_index = int(input("Enter task number: "))
+                        if not delete_task(day, task_index):
+                            print("Task has been deleted successfully")
 
 
                 case 4:
