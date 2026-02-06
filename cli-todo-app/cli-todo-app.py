@@ -48,6 +48,8 @@ def delete_task(day:str, task_id:int):
         print("Invalid task number")
         return
     tasks[day].pop(task_id - 1)
+    if not tasks[day]:
+        del tasks[day]
     save_tasks(tasks)
     return
 
