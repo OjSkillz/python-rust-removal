@@ -3,7 +3,7 @@ from click import help_option
 
 def read_file(path):
     with open(path, "r") as file:
-        return file.read()
+        return [file.read()]
 
 def clean_text(file):
     for word in file:
@@ -26,6 +26,7 @@ def print_top_words(counter, limit=10):
 
 file_path = input("Enter the file path: ")
 read_text = read_file(file_path)
+print(read_text)
 cleaned_text = clean_text(read_text)
 count_words(cleaned_text)
 print_top_words(count_words(clean_text(read_text)))
