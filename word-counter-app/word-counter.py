@@ -3,10 +3,10 @@ from click import help_option
 
 def read_file(path):
     with open(path, "r") as file:
-        return [file.read()]
+        return file.read()
 
 def clean_text(file):
-    for word in file:
+    for word in file.split():
         if word in ["!",":",";",",",".","?"]:
             file.replace(word, "")
     cleaned_file = file.split(" ")
