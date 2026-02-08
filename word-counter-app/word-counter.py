@@ -6,7 +6,10 @@ def read_file(path):
         return file.read()
 
 def clean_text(file):
-    cleaned_file = file.replace(["!",":",";",",",".","?"], " ").lower().split(" ")
+    for word in file:
+        if word in ["!",":",";",",",".","?"]:
+            file.remove(word)
+    cleaned_file = file.split(" ")
     return cleaned_file
 
 def count_words(words):
