@@ -8,7 +8,7 @@ def read_file(path):
 def clean_text(file):
     for word in file:
         if word in ["!",":",";",",",".","?"]:
-            file.remove(word)
+            file.replace(word, "")
     cleaned_file = file.split(" ")
     return cleaned_file
 
