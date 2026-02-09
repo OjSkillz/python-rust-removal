@@ -7,18 +7,16 @@ def read_file(path):
 
 def clean_text(file):
     file = file.lower().split()
-    for word in file:
-        if word[::-1] in [",",".",":","!","?"]:
-            word[::-1] = ""
-    print(file)
+    for i, w in enumerate(file):
+      file[i] = w.strip(".,!?:;")
     return file
 
 def count_words(words):
+    counter = {}
     for word in words:
-        print(f"{word} : {words.count(word)}")
-        counter = {word: words.count(word)}
-        return counter
-    return None
+        counter[word] = words.count(word)
+    return counter
+
 
 
 def print_top_words(counter, limit=10):
@@ -27,7 +25,6 @@ def print_top_words(counter, limit=10):
 
 file_path = input("Enter the file path: ")
 read_text = read_file(file_path)
-print(read_text)
 cleaned_text = clean_text(read_text)
 count_words(cleaned_text)
 print_top_words(count_words(clean_text(read_text)))
